@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="jargon">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="description" content="Jargon Generator">
+    <meta name="author" content="Steve Elgas">
+
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans">
+    <link rel="stylesheet" href="style/jargon.css" type="text/css">
+
+    <title>Jargon Generator!</title>
+</head>
+<body ng-controller="jargonController">
+
+<div class="page-contents">
+    <div class="header">
+        <div class="type-selector-list">
+            <div class="type-selector" ng-repeat="(name, type) in jargonTypes" ng-class="{'selected': selectedType == name}" ng-click="selectType(name)">
+                {{name}}
+            </div>
+        </div>
+        <div class="type-title-container">
+            <div class="type-title">Jargon Generator</div>
+            <div class="type-message">{{jargonTypes[selectedType].message}}</div>
+        </div>
+    </div>
+
+    <div class="generate-button-container">
+        <button class="generate-button" ng-click="generateJargon()">Generate</button>
+    </div>
+
+    <div class="jargon-output-container">
+        <div class="jargon-output">{{jargonOutput}}</div>
+    </div>
+
+    <div class="copy-button-container" ng-class="{'invisible': jargonOutput == ''}">
+        <button class="copy-button" ng-click="copyJargon()">Copy</button>
+        <span class="copied-message" ng-class="{'invisible': copiedMessage == ''}">{{copiedMessage}}</span>
+    </div>
+
+</div>
+
+<div class="footer">Steve made this (steve@shinytoylabs.com, /u/SteveTenants), and he doesn't really care what you do with it as long as it's something cool and you give him a little credit.</div>
+
+<textarea class="copymachine"></textarea>
+
+<script src="scripts/angular.min.js"></script>
+<script src="scripts/jargon.js"></script>
+
+</body>
+</html>
