@@ -1,15 +1,25 @@
 'use strict';
 
 (function(angular) {
-    angular.module('jargon').controller('jargonController', ['$scope', '$timeout', 'jargonTypes', function ($scope, $timeout, jargonTypes) {
+    angular.module('jargon').controller('jargonController', ['$scope', '$location', '$timeout', 'jargonTypes', function ($scope, $location, $timeout, jargonTypes) {
+
+        var jargonTypeParam = $location.url().replace(/\//g, '');
+        var initialJargonType = null;
+        for (var key in jargonTypes) {
+            if ( key.toUpperCase() === jargonTypeParam.toUpperCase()) {
+                initialJargonType = key;
+                break;
+            }
+            else if (initialJargonType === null) {
+                initialJargonType = key;
+            }
+        }
 
         $scope.jargonOutput = '';
         $scope.copiedMessage = '';
         $scope.jargonTypes = jargonTypes;
-        for (var firstkey in jargonTypes) {
-            $scope.selectedType = firstkey;
-            break;
-        }
+        $scope.selectedType = initialJargonType;
+
         var wordCache = [];
         var copier = document.querySelector('.copymachine');
 
