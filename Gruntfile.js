@@ -27,7 +27,7 @@ module.exports = function(grunt) {
 
         includeFiles: {
             js: {
-                app: ['src/app/jargon.module.js', 'src/app/jargon.values.js', 'src/app/jargon.module.js']
+                app: ['src/app/jargon.module.js', 'src/app/jargon.values.js', 'src/app/jargon.controller.js']
             }
         },
 
