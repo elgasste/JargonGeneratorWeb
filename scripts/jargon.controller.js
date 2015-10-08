@@ -57,6 +57,7 @@
                 }
             }
 
+            sentence = sentence.charAt(0).toUpperCase() + sentence.slice(1);
             $scope.jargonOutput = sentence;
         };
 
